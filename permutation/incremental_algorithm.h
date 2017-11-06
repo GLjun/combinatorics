@@ -49,10 +49,13 @@ void generator_incremental_nolimit(int n)
 				break;
 			}
 		}
-		
-		print_array(array, n);
+		//print_array(array, n);
 		
 	}while(increment(incre_array, n-1));
+
+
+	delete [] incre_array;
+	delete [] array;
 }
 
 

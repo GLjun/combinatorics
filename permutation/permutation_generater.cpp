@@ -7,9 +7,11 @@
 #include <iostream>
 #include <cstdio>
 #include <cstring>
+#include <ctime>
 
 typedef unsigned short PT;
 typedef unsigned long long uint64;
+
 
 using namespace std;
 
@@ -75,6 +77,7 @@ bool degress(PT* degre_array, int n)
 #include "incremental_algorithm.h"
 #include "degressive_algorithm.h"
 #include "neighbour_algorithm.h"
+#include "swap_incremental_algorithm.h"
 
 void test_algorithm()
 {
@@ -85,11 +88,26 @@ void test_algorithm()
 	 * generator_neighbour_nolimit和generator_neighbour 是邻位对换版本，其中nolimit 版本直接对递减进制数组进行加1操作，因而支持任意序列长度N，而后者是先用uint64的数加1，然后计算出递减进制数，因而有上限*/
 	//generator_library(8);
 	//generator_incremental(8);
-	generator_incremental_nolimit(4);
+	//generator_incremental_nolimit(4);
 	//generator_degressive(4);
 	//generator_degressive_nolimit(15);
 	//generator_neighbour(4);
 	//generator_neighbour_nolimit(4);
+	//generator_swap_incremental_nolimit(4);
+}
+
+void test_performance()
+{
+	clock_t sc, ec, ec2;
+	for(int i = 4; i < 13; i ++)
+	{
+		sc = clock();
+		generator_incremental_nolimit(i);
+		ec = clock();
+		generator_swap_incremental_nolimit(i);
+		ec2 = clock();
+		printf("N: %d, incremental_time: %f, swap_incremental_time: %f\n", i, (ec-sc)*1.0/(CLOCKS_PER_SEC/1000), (ec2-ec)*1.0 / (CLOCKS_PER_SEC/1000));
+	}
 }
 
 
@@ -97,6 +115,7 @@ void test_algorithm()
 int main(int argc, char** argv)
 {
 	test_algorithm();
+	test_performance();
 	
 	return 0;
 }
