@@ -3,6 +3,9 @@
     > Func: 
     > Created Time: 一 11/ 6 13:05:01 2017
  ************************************************************************/
+#pragma once
+
+#include "toolfunc.h"
 
 void generator_swap_incremental_nolimit(int n)
 {

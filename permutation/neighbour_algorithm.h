@@ -3,6 +3,9 @@
     > Func: 
     > Created Time: 一 10/30 19:28:40 2017
  ************************************************************************/
+#pragma once
+
+#include "toolfunc.h"
 
 void generator_neighbour_nolimit(int n)
 {
@@ -76,6 +79,9 @@ void generator_neighbour_nolimit(int n)
 
 
 	}while(degress(degre_array, n-1));
+
+	delete [] degre_array;
+	delete [] array;
 	
 }
 
@@ -169,4 +175,6 @@ void generator_neighbour(int n)
 
 		print_array(array, n);
 	}
+	delete [] degre_array;
+	delete [] array;
 }

@@ -3,6 +3,9 @@
     > Func: 
     > Created Time: 二 10/24 21:05:56 2017
  ************************************************************************/
+#pragma once
+
+#include "toolfunc.h"
 
 
 void reverse(PT* array, int start, int end)
@@ -38,7 +41,6 @@ bool caculate_lib_next_permutation(PT* array, int n)
 
 void generator_library(int n)
 {
-	cout << "start generatinglibrary permutation" << endl;
 	if(n < 1)
 		printf("error input, %d\n", n);
 	if(n == 1)
@@ -59,5 +61,5 @@ void generator_library(int n)
 		if(cnt ++ > 100)
 			break;
 	}
-	cout << "finished generatinglibrary permutation" << endl;
+	delete [] array;
 }

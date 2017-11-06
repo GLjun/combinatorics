@@ -3,6 +3,9 @@
     > Func: 
     > Created Time: 二 10/24 21:19:01 2017
  ************************************************************************/
+#pragma once
+
+#include "toolfunc.h"
 
 
 void generator_incremental_nolimit(int n)
@@ -19,7 +22,7 @@ void generator_incremental_nolimit(int n)
 		memset(array, 0, sizeof(PT)*n);
 		
 		i = 0;
-		while(!incre_array[i]) // incre_array[i] == 0
+		while(!incre_array[i] && i < n-1) // incre_array[i] == 0
 		{
 			array[n-1-i] = n-i;
 			i ++;
@@ -130,5 +133,7 @@ void generator_incremental(int n)
 
 		}
 	}
+	delete [] incre_array;
+	delete [] array;
 
 }

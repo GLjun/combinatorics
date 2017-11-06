@@ -3,6 +3,9 @@
     > Func: 
     > Created Time: 一 10/30 17:27:25 2017
  ************************************************************************/
+#pragma once
+
+#include "toolfunc.h"
 
 
 void generator_degressive_nolimit(int n)
@@ -51,6 +54,9 @@ void generator_degressive_nolimit(int n)
 		array[k] = 1;
 		print_array(array, n);
 	}while(degress(degre_array, n-1));
+
+	delete [] array;
+	delete [] degre_array;
 }
 
 void generator_degressive(int n)
@@ -116,4 +122,7 @@ void generator_degressive(int n)
 		print_array(array, n);
 		
 	}
+
+	delete [] degre_array;
+	delete [] array;
 }
