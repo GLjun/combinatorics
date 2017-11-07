@@ -51,15 +51,15 @@ void generator_library(int n)
 	for(int i = 0;i < n; i++)
 		array[i] = i + 1;
 	//print the first permutation
-	print_array(array, n);
+	//print_array(array, n);
 
 	//=========counter
 	int cnt = 0;
 	while(caculate_lib_next_permutation(array, n))
 	{
-		print_array(array, n);
-		if(cnt ++ > 100)
-			break;
+		//print_array(array, n);
+		//if(cnt ++ > 100)
+			//break;
 	}
 	delete [] array;
 }

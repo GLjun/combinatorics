@@ -10,7 +10,8 @@
 #include <cstring>
 #include <ctime>
 
-typedef unsigned short PT;
+
+typedef unsigned char PT;
 typedef unsigned long long uint64;
 
 void print_array(PT* array, int n)

@@ -8,10 +8,20 @@
 #include "toolfunc.h"
 
 
-void generator_incremental_nolimit(int n)
+uint64 generator_incremental_nolimit(int n)
 {
+
+	uint64 *diff_hash_array = new uint64[n+1];
+	memset(diff_hash_array, 0, sizeof(uint64)*(n+1));
+
 	//permutation array
 	PT *array = new PT[n];
+#ifdef DIFF_WATCH
+	PT *array_bak = new PT[n];
+	uint64 localcnt = 0;
+	uint64 diff_cnt = 0;
+	int flag = 0;
+#endif
 	//incremental carry number array
 	PT *incre_array = new PT[n-1];
 	memset(incre_array, 0, sizeof(PT)*(n-1));
@@ -19,6 +29,23 @@ void generator_incremental_nolimit(int n)
 	int i = 0, j = 0, k = 0, cnt = 0;
 
 	do{
+#ifdef DIFF_WATCH
+		if(flag > 1)
+		{
+			//compare array and array_bak
+			localcnt = 0;
+			for(i = 0;i < n; i ++)
+				if(array[i] != array_bak[i])
+				{
+					diff_cnt ++;
+					localcnt ++;
+				}
+			diff_hash_array[localcnt-1] ++;
+		}
+		else
+			flag ++;
+		memcpy(array_bak, array, sizeof(PT)*n);
+#endif
 		memset(array, 0, sizeof(PT)*n);
 		
 		i = 0;
@@ -59,6 +86,14 @@ void generator_incremental_nolimit(int n)
 
 	delete [] incre_array;
 	delete [] array;
+#ifdef DIFF_WATCH
+	for(i = 0;i < n;i ++)
+		printf("%d:%lld ", i+1, diff_hash_array[i]);
+	printf("\n");
+	return diff_cnt;
+#else
+	return 0;
+#endif
 }
 
 

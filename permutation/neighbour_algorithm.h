@@ -75,12 +75,12 @@ void generator_neighbour_nolimit(int n)
 		while(array[k])
 			k --;
 		array[k] = 1;
-		print_array(array, n);
+		//print_array(array, n);
 
 
 	}while(degress(degre_array, n-1));
 
-	delete [] degre_array;
+	delete [] degre_array_with_offset;
 	delete [] array;
 	
 }

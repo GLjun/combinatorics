@@ -52,7 +52,7 @@ void generator_degressive_nolimit(int n)
 		while(array[k])
 			k ++;
 		array[k] = 1;
-		print_array(array, n);
+		//print_array(array, n);
 	}while(degress(degre_array, n-1));
 
 	delete [] array;
