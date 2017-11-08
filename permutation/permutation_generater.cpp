@@ -42,9 +42,11 @@ void test_performance()
 	for(int i = 4; i < 12; i ++)
 	{
 		sc = clock();
-		idiffcnt = generator_incremental_nolimit(i);
+		//idiffcnt = generator_degressive_nolimit(i);
+		//idiffcnt = generator_incremental_nolimit(i);
+		idiffcnt = generator_dswap_incremental_nolimit(i);
 		ec = clock();
-		swdiffcnt = generator_dswap_incremental_nolimit(i);
+		//swdiffcnt = generator_dswap_incremental_nolimit(i);
 		ec2 = clock();
 		printf("N: %d, incremental_time: %f, swap_incremental_time: %f, incremental_diff_cnt: %llu avg: %f, dswap_incremental_diff_cnt: %llu, avg: %f\n", i, (ec-sc)*1.0/(CLOCKS_PER_SEC/1000), (ec2-ec)*1.0 / (CLOCKS_PER_SEC/1000), idiffcnt, idiffcnt*1.0/factoral(i), swdiffcnt, swdiffcnt*1.0/factoral(i));
 	}
@@ -53,7 +55,7 @@ void test_performance()
 void test_performanceALL()
 {
 	clock_t sc, ec;
-	for(int i = 4;i < 12; i ++)
+	for(int i = 4;i < 13; i ++)
 	{
 		printf("N: %d, ", i);
 		sc = clock();

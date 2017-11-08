@@ -11,12 +11,12 @@
 uint64 generator_incremental_nolimit(int n)
 {
 
-	uint64 *diff_hash_array = new uint64[n+1];
-	memset(diff_hash_array, 0, sizeof(uint64)*(n+1));
 
 	//permutation array
 	PT *array = new PT[n];
 #ifdef DIFF_WATCH
+	uint64 *diff_hash_array = new uint64[n+1];
+	memset(diff_hash_array, 0, sizeof(uint64)*(n+1));
 	PT *array_bak = new PT[n];
 	uint64 localcnt = 0;
 	uint64 diff_cnt = 0;
