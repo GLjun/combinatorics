@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cstdio>
 
-//#define DIFF_WATCH
+#define DIFF_WATCH
 
 // library argorithm
 #include "library_algorithm.h"
@@ -52,6 +52,25 @@ void test_performance()
 	}
 }
 
+void test_diffAll()
+{
+	uint64 diffcnt = 0;
+	for(int i = 4;i < 13; i ++)
+	{
+		printf("=====N:%d====\n", i);
+		diffcnt = generator_incremental_nolimit(i);
+		printf("incre:cnt : %llu, avg: %f\n", diffcnt, diffcnt*1.0/factoral(i));
+		diffcnt = generator_degressive_nolimit(i);
+		printf("degre:cnt : %llu, avg: %f\n  ", diffcnt, diffcnt*1.0/factoral(i));
+		//diffcnt = generator_neighbour_nolimit(i);
+		//printf("neigh:cnt : %llu, avg: %f   ", diffcnt, diffcnt*1.0/factoral(i));
+		diffcnt = generator_dswap_incremental_nolimit(i);
+		printf("dswap:cnt : %llu, avg: %f\n", diffcnt, diffcnt*1.0/factoral(i));
+		
+	}
+
+}
+
 void test_performanceALL()
 {
 	clock_t sc, ec;
@@ -86,7 +105,8 @@ int main(int argc, char** argv)
 {
 	//test_algorithm();
 	//test_performance();
-	test_performanceALL();
+	//test_performanceALL();
+	test_diffAll();
 	
 	return 0;
 }
